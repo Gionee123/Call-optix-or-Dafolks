@@ -8,7 +8,12 @@ const server = express()
 
 // Enhanced CORS configuration
 server.use(cors({
-  origin: ['http://localhost:3000', 'http://127.0.0.1:3000'], // Allow Next.js frontend
+  origin: [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'https://call-optix-or-dafolks.vercel.app',
+    'https://call-optix-or-dafolks.vercel.app/'
+  ], // Allow Next.js frontend and Vercel deployment
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -52,9 +57,9 @@ mongoose.connect(MONGO_URI)
     }
     console.log('✅ Local Database Connected Successfully');
 
-    const PORT = 5000;
+    const PORT = process.env.PORT || 5000;
     server.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`🚀 Server running on port ${PORT}`);
     });
   })
   .catch((err) => {
