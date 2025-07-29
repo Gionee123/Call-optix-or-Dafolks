@@ -3,8 +3,8 @@ services:
     name: call-optix-api
     env: node
     buildCommand: npm install
-    startCommand: npm start
-    rootDir: .
+    startCommand: node index.js
+    rootDir: server
     envVars:
       - key: NODE_ENV
         value: production
